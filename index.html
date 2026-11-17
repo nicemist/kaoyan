@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5ef">
+  <meta name="description" content="考研复习工作台：政治知识点、解题方法、英语二词汇与作文练习。">
+  <title>考研方法论 · 复习工作台</title>
+  <style>
+    :root{--bg:#f5f5ef;--ink:#263b32;--muted:#788078;--line:#dedfd5;--green:#43644c;--paper:#fdfdf9}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+    button,input{font:inherit}button,a,input{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #789b76;outline-offset:5px}
+    .wrap{max-width:1160px;margin:auto;padding:0 44px}header{height:98px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;gap:12px;align-items:center;font-size:16px;font-weight:700;letter-spacing:2px}.brand-icon{height:34px;width:34px;display:grid;place-items:center;background:var(--ink);color:#fff;border-radius:10px}.brand-icon svg{width:20px;height:20px}.header-right{display:flex;align-items:center;gap:20px;font-size:12px;color:var(--muted)}.status{display:flex;align-items:center;gap:7px}.dot{height:6px;width:6px;border-radius:50%;background:#73946e}
+    .hero{padding:68px 0 42px;display:grid;grid-template-columns:1.35fr 1fr;align-items:center;gap:45px}.eyebrow{font-size:11px;letter-spacing:3px;font-weight:600;color:var(--green);display:flex;align-items:center;gap:12px}.eyebrow:before{content:"";width:25px;height:1px;background:var(--green)}h1{font-family:"Songti SC","SimSun",serif;font-weight:500;font-size:54px;letter-spacing:3px;line-height:1.35;margin:19px 0 19px}h1 span{color:#73866b}.intro{color:#778074;font-size:14px;line-height:1.95;margin:0}.hero-art{height:226px;position:relative;display:flex;align-items:center;justify-content:center}.orb{width:205px;height:205px;border-radius:50%;background:#e7eadf;position:absolute;right:35px;top:5px}.orbit{position:absolute;width:280px;height:160px;border:1px solid #ccd3c1;transform:rotate(-28deg);border-radius:50%}.art-note{z-index:1;background:#fcfcf7;box-shadow:0 15px 40px #3d533213;border:1px solid #dbe0d2;border-radius:7px;width:185px;padding:24px 23px;transform:rotate(-8deg)}.art-note small{font-size:9px;letter-spacing:2px;color:#83917b}.art-note p{font-family:"Songti SC","SimSun",serif;font-size:23px;line-height:1.6;margin:13px 0 17px}.note-line{height:1px;background:#dce2d3;margin:9px 0}.art-label{z-index:2;position:absolute;bottom:19px;right:15px;border-radius:30px;background:#e1e8d5;border:4px solid var(--bg);font-size:11px;padding:12px 19px;letter-spacing:1px;color:#526347}.spark{position:absolute;z-index:3;top:13px;right:12px;font-size:34px;color:#a0ae8f}
+    .toolbar{display:flex;justify-content:space-between;align-items:center;gap:24px;margin:5px 0 24px}.filters{display:flex;gap:6px;background:#eaece3;padding:5px;border-radius:12px}.filter{border:0;background:transparent;color:#788071;padding:10px 19px;border-radius:8px;font-size:13px}.filter[aria-pressed="true"]{background:var(--paper);color:var(--ink);box-shadow:0 2px 5px #263b3208}.search{position:relative;width:285px;display:flex;align-items:center}.search svg{position:absolute;left:15px;width:17px;height:17px;color:#8c9587}.search input{width:100%;border:1px solid var(--line);border-radius:10px;background:#fafaf5;height:43px;padding:0 35px 0 42px;color:var(--ink);font-size:12px}.search input::placeholder{color:#93998e}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.card{--accent:#557353;--tint:#eaf0e5;position:relative;background:var(--paper);border:1px solid #dddfd5;border-radius:18px;padding:27px 29px 22px;transition:transform .2s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column;min-height:292px;overflow:hidden}.card:hover{transform:translateY(-4px);border-color:#a8b79d;box-shadow:0 12px 30px #263b3209}.card[hidden]{display:none}.card-top{display:flex;align-items:center;justify-content:space-between}.icon{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:var(--tint);color:var(--accent)}svg{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.icon svg{width:23px;height:23px}.category{font-size:10px;letter-spacing:2px;color:#939b8c}.card h2{font-size:22px;font-weight:600;letter-spacing:1px;margin:21px 0 10px}.description{font-size:13px;color:#83897e;line-height:1.85;margin:0 0 17px}.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:23px}.tag{font-size:11px;padding:5px 9px;background:var(--tint);color:var(--accent);border-radius:5px}.card-bottom{border-top:1px solid #eceee5;padding-top:15px;margin-top:auto;display:flex;justify-content:space-between;align-items:center}.card-bottom small{font-size:11px;color:#949b8e}.enter{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:600;color:var(--accent)}.enter svg{width:17px;height:17px;transition:transform .2s}.card:hover .enter svg{transform:translateX(4px)}.methods{--accent:#9a7951;--tint:#f5eee3}.words{--accent:#5e8291;--tint:#e9f0f3}.writing{--accent:#85708f;--tint:#f0ebf3}
+    .section-title{display:flex;gap:12px;align-items:center;margin:0 0 20px}.section-title h2{font-size:13px;font-weight:500;margin:0}.section-title span{color:#9ca28f;font-size:10px;letter-spacing:2px}.section-title:after{content:"";height:1px;background:var(--line);flex:1;margin-left:3px}.empty{text-align:center;padding:55px 20px;color:var(--muted);border:1px dashed var(--line);border-radius:16px;font-size:14px}.daily{display:flex;align-items:center;gap:17px;margin-top:27px;padding:20px 23px;border-radius:12px;background:#e9ecdf}.daily-icon{color:#7b8e69;flex-shrink:0;width:22px;height:22px}.daily p{margin:0;font-size:12px;line-height:1.9;color:#7b8471}.daily strong{color:#54674b;font-weight:500;margin-right:10px}footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:27px 0 30px;margin-top:16px;font-size:10px;color:#959d8d;letter-spacing:1px}footer span:last-child{letter-spacing:0} .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(min-width:1450px){.wrap{padding-top:12px}.hero{padding-top:78px}}
+    @media(max-width:760px){.wrap{padding:0 22px}header{height:78px}.header-right .status{display:none}.brand{font-size:14px}.hero{padding:42px 0 31px;grid-template-columns:1fr;gap:0}h1{font-size:43px}.hero-art{display:none}.intro{font-size:13px}.toolbar{gap:15px;align-items:stretch;flex-direction:column}.search{width:100%}.filters{align-self:flex-start}.grid{gap:15px;grid-template-columns:1fr}.card{padding:24px;min-height:280px}.card h2{font-size:21px}.daily{align-items:flex-start;padding:18px}.daily strong{display:block}footer{align-items:flex-start;font-size:9px;line-height:1.8}footer span:last-child{max-width:145px;text-align:right}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="./index.html" aria-label="考研方法论首页"><span class="brand-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6a3 3 0 0 1 3 3v12a4 4 0 0 0-4-2H4zM13 8a3 3 0 0 1 3-3h4v13h-3a4 4 0 0 0-4 2"/></svg></span>考研方法论</a>
+      <div class="header-right"><time id="date"></time><span class="status"><i class="dot"></i>复习工作台</span></div>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="welcome">
+        <div><div class="eyebrow">A LITTLE PROGRESS, EVERY DAY</div><h1 id="welcome">把每一次复习，<br>变成<span>向前的一步。</span></h1><p class="intro">知识点、解题方法、词汇与写作，都在这里。<br>选一个入口，从今天的一点进步开始。</p></div>
+        <div class="hero-art" aria-hidden="true"><div class="orb"></div><div class="orbit"></div><div class="spark">✳</div><div class="art-note"><small>NOTE TO SELF / 01</small><p>学过的知识，<br>要再见一面。</p><div class="note-line"></div><div class="note-line" style="width:70%"></div></div><span class="art-label">保持专注 · 慢慢积累</span></div>
+      </section>
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="按科目筛选"><button class="filter" type="button" data-filter="all" aria-pressed="true">全部内容</button><button class="filter" type="button" data-filter="politics" aria-pressed="false">政治</button><button class="filter" type="button" data-filter="english" aria-pressed="false">英语</button></div>
+        <label class="search"><span class="sr-only">搜索复习内容</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><input id="search" type="search" placeholder="搜索关键词，如：错题、单词、作文" autocomplete="off"></label>
+      </div>
+      <div class="section-title"><h2>我的复习入口</h2><span id="count" role="status" aria-live="polite">04 RESOURCES</span></div>
+      <section class="grid" aria-label="复习页面">
+        <a class="card" href="./帕拉迪宇政治一页纸.html" data-subject="politics" data-keywords="政治 帕拉迪宇 一页纸 知识点 马原 史纲 毛中特 新思想 思修 真题 模拟卷 选择题 错题本">
+          <div class="card-top"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/></svg></span><span class="category">POLITICS / 01</span></div>
+          <h2>政治 · 知识点一页纸</h2><p class="description">用知识卡串联考点，在真题与模拟题中检验记忆。</p><div class="tags"><span class="tag">帕拉迪宇</span><span class="tag">知识卡片</span><span class="tag">真题回查</span><span class="tag">学科错题本</span></div><div class="card-bottom"><small>记考点 · 做练习 · 查遗漏</small><span class="enter">开始复习 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span></div>
+        </a>
+        <a class="card methods" href="./政治一页纸解题方法手册.html" data-subject="politics" data-keywords="政治 一页纸 解题 方法 手册 技巧 阅读 题库 选择题 错题本 学习记录 备份">
+          <div class="card-top"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6a3 3 0 0 1 2 1 3 3 0 0 1 2-1h6v15h-6a3 3 0 0 0-2 1 3 3 0 0 0-2-1H4zM12 5v15M7 8h2M15 8h2M7 12h2M15 12h2"/></svg></span><span class="category">POLITICS / 02</span></div>
+          <h2>政治 · 解题方法手册</h2><p class="description">读懂解题思路，再用配套练习把方法变成习惯。</p><div class="tags"><span class="tag">解题方法</span><span class="tag">题库练习</span><span class="tag">错题复盘</span><span class="tag">学习记录</span></div><div class="card-bottom"><small>读方法 · 练题目 · 再复盘</small><span class="enter">打开手册 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span></div>
+        </a>
+        <a class="card words" href="./英二单词速刷.html" data-subject="english" data-keywords="英语 英语二 英二 单词 词汇 速刷 考频 释义 例句 翻译 记忆 认识 模糊 忘记 间隔复习 到期复习 Leitner">
+          <div class="card-top"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M7 5V3M17 5V3M6 10h12M8 16l2-4 2 4m-3-1h2M15 13h2m-2 3h2"/></svg></span><span class="category">ENGLISH / 01</span></div>
+          <h2>英语二 · 单词速刷</h2><p class="description">按考频学新词，按记忆程度安排下一次见面。</p><div class="tags"><span class="tag">高频词汇</span><span class="tag">真题例句</span><span class="tag">记忆分级</span><span class="tag">到期复习</span></div><div class="card-bottom"><small>先回忆 · 再核对 · 按时复习</small><span class="enter">去背单词 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span></div>
+        </a>
+        <a class="card writing" href="./英二练习.html" data-subject="english" data-keywords="英语 英语二 英语一 英二 英一 作文 大作文 写作 逐句工作台 句型 短语 替换 中英对照 讲义 图表 段落 字数">
+          <div class="card-top"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7M9 15l1-4L18 3a2 2 0 0 1 3 3l-8 8zM16 5l3 3M7 18h7"/></svg></span><span class="category">ENGLISH / 02</span></div>
+          <h2>英语 · 大作文工作台</h2><p class="description">从题型到段落，逐句组织表达，拼出完整作答。</p><div class="tags"><span class="tag">逐句写作</span><span class="tag">短语替换</span><span class="tag">中英对照</span><span class="tag">88 页讲义</span></div><div class="card-bottom"><small>选题型 · 组段落 · 查表达</small><span class="enter">开始写作 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span></div>
+        </a>
+      </section>
+      <p class="empty" id="empty" hidden>没有找到相关内容，试试“政治”“词汇”或“写作”。</p>
+      <aside class="daily"><svg class="daily-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 2H9s0-1-1-2Z"/></svg><p><strong>给今天的自己</strong>先回忆，再查看；先复习，再学新。让每次打开，都有一点收获。</p></aside>
+    </main>
+    <footer><span>考研方法论 / STUDY AT YOUR OWN PACE</span><span>学习记录保存在各页面使用的浏览器中，请定期备份。</span></footer>
+  </div>
+  <script>
+    (()=>{
+      const date=document.getElementById('date');
+      const now=new Date();
+      date.textContent=new Intl.DateTimeFormat('zh-CN',{month:'long',day:'numeric',weekday:'long'}).format(now);
+      date.dateTime=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
+      let subject='all';
+      const search=document.getElementById('search'),cards=[...document.querySelectorAll('.card')],buttons=[...document.querySelectorAll('.filter')];
+      const update=()=>{
+        const terms=search.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+        let count=0;
+        cards.forEach(card=>{const text=(card.textContent+' '+card.dataset.keywords).toLocaleLowerCase();const show=(subject==='all'||card.dataset.subject===subject)&&terms.every(term=>text.includes(term));card.hidden=!show;if(show)count++});
+        document.getElementById('count').textContent=String(count).padStart(2,'0')+' RESOURCES';
+        document.getElementById('empty').hidden=count>0;
+      };
+      buttons.forEach(button=>button.addEventListener('click',()=>{subject=button.dataset.filter;buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));update()}));
+      search.addEventListener('input',update);
+    })();
+  </script>
+</body>
+</html>

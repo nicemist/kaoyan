@@ -1,0 +1,677 @@
+<!doctype html>
+<!-- Offline snapshot of https://www.markji.com/public/one-page.html; built 2026-11-12. -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta id="theme-color-meta" name="theme-color" content="#FFFFFF" />
+    <title>帕拉迪宇一页纸工作台</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%2336B59D'/%3E%3Ctext x='24' y='30' text-anchor='middle' font-size='25'%3E📄%3C/text%3E%3Ctext x='24' y='42' text-anchor='middle' fill='white' font-family='Kaiti SC,STKaiti,serif' font-size='7'%3E一页纸%3C/text%3E%3C/svg%3E"
+    />
+    <script src="./one-page/theme.js"></script>
+    <link rel="stylesheet" href="./one-page/styles.css" />
+    <link rel="stylesheet" href="./one-page/wrong-notebook.css" />
+    <link rel="stylesheet" href="./one-page/page-info.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="返回顶部">
+        <span class="brand-mark"> <span class="brand-mark-main">📄</span><small>一页纸</small> </span>
+        <span class="brand-copy">帕拉迪宇一页纸工作台<small>CHOICE KNOWLEDGE</small></span>
+      </a>
+      <div class="topbar-actions">
+        <nav class="view-switch" aria-label="工作台视图切换">
+          <a id="view-workbench" href="?view=workbench#knowledge"
+            ><span class="nav-full">知识点一页纸</span><span class="nav-short">知识点</span></a
+          >
+          <button id="view-method" type="button" data-qr-dialog="method">
+            <span class="nav-full">解题方法一页纸</span><span class="nav-short">解题方法</span>
+          </button>
+          <a id="view-simulation" href="?view=simulation#knowledge"
+            ><span class="nav-full">模拟卷考点</span><span class="nav-short">模拟考点</span></a
+          >
+          <button id="view-page-info" type="button" aria-haspopup="dialog" aria-controls="page-info-dialog" aria-expanded="false">网页说明</button>
+        </nav>
+        <span class="topbar-divider" aria-hidden="true"></span>
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="切换到夜间模式"
+          aria-pressed="false"
+          title="切换到夜间模式"
+        >
+          <span class="theme-toggle-moon" aria-hidden="true"
+            ><svg viewBox="0 0 24 24"><path d="M20.7 15.2A8.5 8.5 0 0 1 8.8 3.3 9.5 9.5 0 1 0 20.7 15.2Z" /></svg
+          ></span>
+          <span class="theme-toggle-sun" aria-hidden="true"
+            ><svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4.5" />
+              <path
+                d="M11 1h2v3h-2V1Zm0 19h2v3h-2v-3ZM1 11h3v2H1v-2Zm19 0h3v2h-3v-2ZM4.22 2.8l2.12 2.12-1.42 1.42L2.8 4.22 4.22 2.8Zm13.44 14.86 2.12 2.12-1.42 1.42-2.12-2.12 1.42-1.42ZM2.8 19.78l2.12-2.12 1.42 1.42-2.12 2.12-1.42-1.42ZM17.66 4.92l2.12-2.12 1.42 1.42-2.12 2.12-1.42-1.42Z"
+              /></svg
+          ></span>
+        </button>
+        <button
+          class="card-text-toggle"
+          id="card-text-toggle"
+          type="button"
+          aria-label="将知识点卡片文字切换为黑白色"
+          aria-pressed="false"
+          title="将知识点卡片文字切换为黑白色"
+        >
+          <span class="card-text-toggle-icon" aria-hidden="true">文</span>
+        </button>
+        <button
+          class="all-card-toggle"
+          id="all-card-toggle"
+          type="button"
+          aria-label="隐藏所有知识点卡片"
+          aria-pressed="false"
+          title="隐藏所有知识点卡片"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 12c2.4-3.8 5.7-6 10-6s7.6 2.2 10 6c-2.4 3.8-5.7 6-10 6S4.4 15.8 2 12Z" />
+            <circle cx="12" cy="12" r="3" />
+            <path class="eye-slash" d="M3 21 21 3" />
+          </svg>
+        </button>
+        <span class="total-badge" id="total-badge"></span>
+      </div>
+    </header>
+
+    <div class="help-fab-wrap">
+      <button
+        class="help-fab"
+        id="help-toggle"
+        type="button"
+        aria-label="帮助与说明"
+        aria-expanded="false"
+        aria-controls="help-menu"
+      >
+        ?
+      </button>
+      <div class="help-menu" id="help-menu" hidden>
+        <a href="https://markji.discourse.group/t/topic/1225" target="_blank" rel="noopener noreferrer"
+          ><span aria-hidden="true">📥</span>错题导入说明书</a
+        >
+        <a href="https://space.bilibili.com/3747575708518773" target="_blank" rel="noopener noreferrer"
+          ><span aria-hidden="true">▶</span>工作台讲解视频</a
+        >
+        <button type="button" data-qr-dialog="timeline"><span aria-hidden="true">🕘</span>史纲互动时间轴</button>
+        <a href="https://space.bilibili.com/6536560" target="_blank" rel="noopener noreferrer"
+          ><span aria-hidden="true">🎬</span>帕拉迪宇视频课</a
+        >
+        <a href="https://markji.discourse.group/t/topic/1226" target="_blank" rel="noopener noreferrer"
+          ><span aria-hidden="true">🖨</span>打印一页纸资料</a
+        >
+        <button type="button" data-qr-dialog="pdf"><span aria-hidden="true">📄</span>获取一页纸PDF</button>
+        <button type="button" data-qr-dialog="update"><span aria-hidden="true">↻</span>检查工作台更新</button>
+      </div>
+    </div>
+    <button
+      class="sheet-fab"
+      id="sheet-toggle"
+      type="button"
+      aria-controls="answer-sheet"
+      aria-expanded="false"
+      aria-label="套卷检索"
+      disabled
+    >
+      <svg
+        class="sheet-fab-icon"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <rect x="3" y="4" width="18" height="17" rx="3"></rect>
+        <path d="M7.5 9h4M13.5 9h3M7.5 13.5h4M13.5 13.5h3"></path>
+      </svg>
+      <span>套卷检索</span>
+    </button>
+    <div id="selection-toolbar" class="selection-toolbar" hidden="" aria-label="文字编辑工具">
+      <div class="format-row">
+        <span class="format-label">文字格式</span>
+        <button type="button" data-format-command="bold" title="加粗">B</button>
+        <button type="button" data-format-command="underline" title="下划线"><u>U</u></button>
+        <button type="button" data-format-command="unorderedList" title="添加或取消无序列表">• 列表</button>
+        <button type="button" data-format-command="removeFormat" title="清除格式">清除</button>
+      </div>
+      <div class="format-row">
+        <span class="format-label">文字颜色</span>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="foreColor"
+          data-format-color="#e05252"
+          style="color: #e05252"
+          title="红色文字"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="foreColor"
+          data-format-color="#e89022"
+          style="color: #e89022"
+          title="橙色文字"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="foreColor"
+          data-format-color="#d4a917"
+          style="color: #d4a917"
+          title="黄色文字"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="foreColor"
+          data-format-color="#2fb69d"
+          style="color: #2fb69d"
+          title="绿色文字"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="foreColor"
+          data-format-color="#1546c9"
+          style="color: #1546c9"
+          title="蓝色文字"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="foreColor"
+          data-format-color="#8057c6"
+          style="color: #8057c6"
+          title="紫色文字"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="foreColor"
+          data-format-color="#344863"
+          style="color: #344863"
+          title="默认文字颜色"
+        >
+          A
+        </button>
+      </div>
+      <div class="format-row">
+        <span class="format-label">背景高亮</span>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="hiliteColor"
+          data-format-color="#f6c4c4"
+          style="background: #f6c4c4"
+          title="红色高亮"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="hiliteColor"
+          data-format-color="#f9dab1"
+          style="background: #f9dab1"
+          title="橙色高亮"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="hiliteColor"
+          data-format-color="#fff09b"
+          style="background: #fff09b"
+          title="黄色高亮"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="hiliteColor"
+          data-format-color="#bdeed7"
+          style="background: #bdeed7"
+          title="绿色高亮"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="hiliteColor"
+          data-format-color="#eaf1ff"
+          style="background: #eaf1ff; color: #1546c9"
+          title="蓝色高亮"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="hiliteColor"
+          data-format-color="#e3d7f5"
+          style="background: #e3d7f5"
+          title="紫色高亮"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          class="color-swatch"
+          data-format-command="hiliteColor"
+          data-format-color="#e4e6ea"
+          style="background: #e4e6ea"
+          title="灰色高亮"
+        >
+          A
+        </button>
+      </div>
+    </div>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">历年真题 · 今年模拟卷 · 知识点记忆</div>
+          <h1>帕拉迪宇<br />一页纸工作台</h1>
+          <div class="hero-deck" id="hero-deck">
+            按一页纸原文件的 100 张知识卡复习<br />在套卷检索中回查真题与模拟题
+          </div>
+          <p id="hero-description">
+            知识卡按一页纸 PDF 原文件顺序收录，保留文字颜色、高亮、加粗、emoji
+            和图片。点击题号可查看完整题目、选项和答案。
+          </p>
+          <div class="hero-stats">
+            <div class="stat"><strong id="stat-points"></strong><span>知识点卡片</span></div>
+            <div class="stat"><strong id="stat-questions"></strong><span>题库题目</span></div>
+            <div class="stat"><strong id="stat-subjects"></strong><span>考试学科</span></div>
+          </div>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#knowledge">开始查看 <span>→</span></a>
+            <a class="secondary-link" href="#guide">复制与回查说明</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit"></div>
+          <div class="floating-chip chip-a">2012-1</div>
+          <div class="floating-chip chip-b">腿八3-12</div>
+          <div class="floating-chip chip-c">2024-4</div>
+          <div class="hero-card">
+            <div class="hero-card-top"><span>KNOWLEDGE / 01</span><b>可复制</b></div>
+            <h2>一张手册卡片，<br />串起相关练习。</h2>
+            <p>隐藏知识点后先做题；做错时复制题目，粘贴到墨墨记忆卡收藏。</p>
+            <div class="hero-card-tags"><span>学科分类</span><span>全文检索</span><span>原题回查</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace" id="knowledge">
+        <div class="workspace-intro">
+          <div>
+            <p class="section-kicker">KNOWLEDGE INDEX</p>
+            <h2>知识点索引</h2>
+            <p id="snapshot-note"></p>
+          </div>
+          <label class="search-box" id="search-box">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+              <path d="m16.5 16.5 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            <input
+              id="search-input"
+              type="search"
+              autocomplete="off"
+              placeholder="搜索知识点、主题、年份或套卷题号"
+              disabled
+            />
+            <button class="search-clear" id="search-clear" type="button" aria-label="清除搜索">×</button>
+          </label>
+        </div>
+
+        <div class="workbench-loading" id="workbench-loading" role="status" aria-live="polite">
+          <p id="workbench-loading-message">正在加载知识点和题库…</p>
+          <button class="primary-btn" id="workbench-retry" type="button" hidden>重新加载</button>
+          <noscript>请启用 JavaScript 后刷新页面。</noscript>
+        </div>
+        <nav class="mobile-nav" id="mobile-nav" aria-label="学科导航"></nav>
+        <form class="mobile-card-jump card-jump" id="mobile-card-jump">
+          <input
+            type="text"
+            inputmode="search"
+            enterkeyhint="search"
+            autocomplete="off"
+            placeholder="请输入卡片序号或关键词"
+            aria-label="卡片序号或关键词"
+          /><button type="submit">跳转</button>
+        </form>
+        <div class="content-grid" hidden>
+          <aside class="side-nav" id="side-nav" aria-label="学科导航">
+            <div class="side-nav-label">
+              <span>按学科浏览</span>
+              <button
+                class="side-nav-toggle"
+                id="side-nav-toggle"
+                type="button"
+                aria-expanded="true"
+                aria-label="收起学科导航"
+              >
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M15 5l-7 7 7 7"></path>
+                </svg>
+              </button>
+            </div>
+            <form class="card-jump" id="card-jump">
+              <input
+                id="card-jump-input"
+                type="text"
+                inputmode="numeric"
+                pattern="[0-9]+"
+                placeholder="请输入卡片序号"
+                aria-label="卡片序号"
+              /><button type="submit">跳转</button>
+            </form>
+          </aside>
+          <div id="subjects"></div>
+          <div class="empty" id="empty">
+            <strong>没有找到对应知识点</strong>
+            请尝试更短的关键词，或搜索“2012”“实践”“法治”等内容。
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace" id="guide" style="padding-top: 0; max-width: 980px">
+        <p class="section-kicker">HOW IT WORKS</p>
+        <h2 style="font-size: 32px; letter-spacing: -0.04em; margin: 0 0 18px">使用方式</h2>
+        <p style="color: #506a7b; line-height: 1.9; font-size: 14px">
+          顶部可切换“知识点一页纸”“解题方法一页纸”和“模拟卷考点”。点知识卡右上角眼睛按钮可遮住正文，先做题再核对；题目答错后可复制或导出为墨墨记忆卡格式，及时保存到墨墨记忆卡
+          APP。知识卡右上角的复制按钮只复制知识点正文，不附带题目链接。套卷检索用于回查真题和模拟题；左下角问号提供保存方法、讲解视频和后续更新入口。错题保存在当前浏览器，可在学科下的「错题」中复习；本次作答统计刷新后重置。
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span id="footer-description">知识卡来源：27 考研政治一页纸 MarginNote 原文件 · 题目来源：原仪表盘</span>
+      <span id="footer-source"></span>
+    </footer>
+
+    <div class="corner-tools">
+      <button id="back-to-top" class="back-to-top" type="button" aria-label="滚动到顶部" title="顶部"><span aria-hidden="true">↑</span> 顶部</button>
+      <aside class="record-widget collapsed" id="record-widget" aria-label="做题记录" hidden>
+        <div class="record-widget-head">
+          <strong>做题记录</strong
+          ><button id="record-collapse" type="button" aria-label="关闭做题记录">
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2 10 10M10 2 2 10" /></svg>
+          </button>
+        </div>
+        <div class="record-widget-stats">
+          <span>做题数</span><b id="record-total">0</b><span>做对数</span><b id="record-right">0</b><span>做错数</span
+          ><b id="record-wrong">0</b>
+        </div>
+        <button class="record-export" id="record-export" type="button">一键导出所有错题</button>
+        <p class="record-export-tip">本次作答统计刷新后重置，错题本仍保留</p>
+        <button class="record-expand" id="record-expand" type="button" aria-label="展开做题记录">记录</button>
+      </aside>
+    </div>
+
+    <section class="answer-sheet" id="answer-sheet" aria-label="套卷检索" aria-hidden="true">
+      <header class="sheet-head" id="sheet-head">
+        <svg
+          class="sheet-head-icon"
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <rect x="3" y="4" width="18" height="17" rx="3"></rect>
+          <path d="M7.5 9h4M13.5 9h3M7.5 13.5h4M13.5 13.5h3"></path>
+        </svg>
+        <strong>套卷检索</strong>
+        <span class="sheet-sub" id="sheet-sub"></span>
+        <form class="sheet-jump" id="sheet-jump" role="search">
+          <input
+            id="sheet-jump-input"
+            type="text"
+            inputmode="text"
+            autocomplete="off"
+            placeholder="输入题号跳转"
+            aria-label="输入题号跳转"
+          />
+          <button type="submit">跳转</button>
+        </form>
+        <button class="sheet-close" id="sheet-close" type="button" aria-label="收起套卷检索">×</button>
+      </header>
+      <div class="sheet-picks">
+        <label
+          ><span>试卷系列</span
+          ><select id="paper-family"></select
+        ></label>
+        <label
+          ><span>具体试卷</span
+          ><select id="paper-set"></select
+        ></label>
+      </div>
+      <div class="sheet-grid" id="sheet-grid"></div>
+      <div class="sheet-bottom">
+        <p class="sheet-score" id="sheet-score" hidden></p>
+        <p class="answer-record-note" id="sheet-answer-note" hidden>
+          错题已保存到当前浏览器的错题本，可在学科下查看；本次作答统计刷新后重置。&nbsp;<a
+            href="https://markji.discourse.group/t/topic/1225"
+            target="_blank"
+            rel="noopener noreferrer"
+            >?</a
+          >
+        </p>
+        <div class="export-wrap">
+          <button type="button" class="export-trigger" id="export-trigger">一键导出所有错题</button>
+          <div class="export-menu" id="export-menu" hidden>
+            <button type="button" data-export="paper">导出本套卷所有错题（请在电脑端导出）</button
+            ><button type="button" data-export="all">导出工作台所有错题（请在电脑端导出）</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <span id="toast-message">已复制</span>
+      <span id="toast-divider" hidden>｜</span
+      ><a
+        id="toast-help"
+        href="https://markji.discourse.group/t/topic/1225"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="查看墨墨记忆卡保存方法"
+        title="查看保存方法"
+        hidden
+        >?</a
+      >
+    </div>
+    <div class="dialog-backdrop" id="dialog-backdrop" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+      <article class="dialog" id="dialog">
+        <button class="dialog-close-corner" id="dialog-close-corner" type="button" aria-label="关闭题目弹窗">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M3.5 3.5 12.5 12.5M12.5 3.5 3.5 12.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        <header class="dialog-head">
+          <div>
+            <div class="dialog-label" id="dialog-label"></div>
+            <h2 class="dialog-title" id="dialog-title">原题</h2>
+          </div>
+          <div class="question-attempts" aria-live="polite">
+            <span>做对 <b id="question-right-count">0</b> 次</span>
+            <span>做错 <b id="question-wrong-count">0</b> 次</span>
+          </div>
+          <div class="dialog-head-actions">
+            <button
+              class="dialog-reference"
+              id="dialog-reference"
+              type="button"
+              hidden
+              disabled
+              aria-hidden="true"
+              title="复制题目引用，粘贴到知识卡正文"
+            >
+              引用题目
+            </button>
+            <button class="dialog-edit" id="dialog-edit" type="button" hidden disabled aria-hidden="true">
+              编辑题目
+            </button>
+            <button class="dialog-save" id="dialog-save" type="button" hidden disabled aria-hidden="true">
+              保存题目
+            </button>
+            <button class="dialog-cancel" id="dialog-cancel" type="button" hidden disabled aria-hidden="true">
+              取消
+            </button>
+            <div class="question-copy-group">
+              <button class="dialog-copy" id="dialog-copy" type="button">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="9" y="9" width="12" height="12" rx="2.5"></rect>
+                  <path d="M15 5.5A2.5 2.5 0 0 0 12.5 3H5.5A2.5 2.5 0 0 0 3 5.5v7A2.5 2.5 0 0 0 5.5 15"></path></svg
+                ><span id="dialog-copy-label">复制</span>
+              </button>
+              <small class="wrong-copy-note" id="wrong-copy-note" hidden
+                >错题已保存到当前浏览器的错题本，可在学科下查看；本次作答统计刷新后重置。
+                <a
+                  class="wrong-copy-help"
+                  href="https://markji.discourse.group/t/topic/1225"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="查看错题保存方法"
+                  title="查看错题保存方法"
+                  >?</a
+                ></small
+              >
+            </div>
+            <button class="dialog-close" id="dialog-close" type="button" aria-label="关闭">×</button>
+          </div>
+        </header>
+        <div class="dialog-body">
+          <details class="question-knowledge" id="question-knowledge">
+            <summary>知识卡片 <span id="question-knowledge-count"></span></summary>
+            <div class="question-knowledge-list" id="question-knowledge-list"></div>
+          </details>
+          <p class="question-edit-tip" id="question-edit-tip" hidden="">
+            直接修改题干、选项、答案和解析，再点右上角「保存题目」。
+          </p>
+          <span class="question-kind" id="question-kind"></span>
+          <p class="question-stem" id="question-stem"></p>
+          <ol class="options" id="question-options"></ol>
+          <div class="quiz-actions" id="quiz-actions" hidden="">
+            <span class="quiz-status" id="quiz-status">请选择答案</span>
+            <button type="button" id="show-answer" disabled="">显示答案</button>
+            <button type="button" id="next-question" hidden>下一题 →</button>
+          </div>
+          <div class="answer-panel" id="answer-panel">
+            <div class="answer-panel-label">正确答案</div>
+            <div class="answer-main">
+              <strong id="answer-letter"></strong>
+              <span id="answer-text"></span>
+            </div>
+          </div>
+          <details class="analysis" id="analysis-box">
+            <summary>展开答案解析</summary>
+            <p id="analysis-text"></p>
+          </details>
+        </div>
+        <footer class="dialog-foot">
+          <span id="card-meta"></span>
+          <a id="markji-link" href="#" target="_blank" rel="noopener">在墨墨中打开原卡 ↗</a>
+        </footer>
+      </article>
+    </div>
+
+    <div class="info-backdrop" id="info-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="info-title">
+      <article class="info-dialog">
+        <button type="button" class="info-close" id="info-close" aria-label="关闭">×</button>
+        <h2 id="info-title"></h2>
+        <p id="info-copy" hidden></p>
+        <img src="./one-page/qr-code.jpeg" alt="微信公众号普通小豆芽二维码及微信搜索提示" />
+      </article>
+    </div>
+
+    <dialog id="page-info-dialog" class="page-info-dialog" aria-labelledby="page-info-title">
+      <div class="page-info-head">
+        <h2 id="page-info-title">网页说明</h2>
+        <button type="button" id="page-info-close" aria-label="关闭网页说明">×</button>
+      </div>
+      <div class="page-info-content">
+        <h3>原页面来源</h3>
+        <p>本页面基于「帕拉迪宇一页纸工作台」的公开页面保存并修改，原有知识卡、题库内容和视觉设计来源于原页面。</p>
+        <p><a href="https://www.markji.com/public/one-page.html" target="_blank" rel="noopener noreferrer">查看原页面：帕拉迪宇一页纸工作台 ↗</a></p>
+        <p class="page-info-meta">页面保存日期：2026年11月12日；题库标注的快照日期：2026年11月2日。本版本不会自动同步原站后续更新。</p>
+        <h3>本版本做了哪些修改</h3>
+        <ol>
+          <li><strong>支持本地运行和静态部署。</strong>保存了页面使用的样式、脚本、题库和图片，可直接本地打开，也可上传服务器访问。</li>
+          <li><strong>按学科切换内容。</strong>每次只显示当前学科的知识点及其关联题目，点击左侧学科切换，不再将全部学科堆叠在同一页。</li>
+          <li><strong>新增学科错题本。</strong>在各学科的二级目录内增加「错题」，答错后自动收录，支持搜索、重新练习、累计错误次数和手动移出。重新答对后仍保留，方便复习。</li>
+          <li><strong>浏览器保存个人错题。</strong>错题保存在当前浏览器的本地存储中，刷新和关闭后再打开仍可查看，不会上传服务器。不同浏览器用户资料的数据互不影响；同一浏览器用户资料会共用记录。</li>
+          <li><strong>调整导航与布局。</strong>补充手机端学科与错题入口，修复切换学科后关联题目不显示的问题，增加本说明入口，并在右下角「记录」上方添加「顶部」按钮。</li>
+        </ol>
+        <h3>错题保存说明</h3>
+        <p>本版本使用 localStorage，而非 Cookie。清除网站数据、更换设备或浏览器后，错题不会同步；无痕模式的记录通常会在会话结束后清除。</p>
+        <p>右下角「记录」统计的是本次页面的作答结果，刷新后重置；学科下的「错题本」会保留。原页面尚未发布的栏目仍保留原有提示，视频、社区帮助和墨墨原卡等站外链接需要联网。</p>
+      </div>
+    </dialog>
+
+    <script src="./one-page/page-info.js"></script>
+    <script src="./one-page/data/offline-data.js"></script>
+    <script src="./one-page/wrong-notebook.js"></script>
+    <script src="./one-page/app.js"></script>
+  </body>
+</html>
